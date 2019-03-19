@@ -1,0 +1,29 @@
+language: node_js
+node_js:
+  - "6"
+  - "8"
+  - "9"
+services:
+  - docker
+cache:
+  directories:
+    - $HOME/docker
+env:
+  global:
+    - PROJECT_NAME=form3-s3
+    - AWS_REGION=eu-west-1
+jobs:
+  include:
+    - stage: test
+      name: "Run Node Tests"
+      script:
+        - npm run build
+        - npm test
+    - stage: test
+      name: "Run Security Scans"
+      script:
+        - echo "Add check here!!!"
+    - stage: publish
+      name: Publish
+      script:
+        - echo "Add Publish here!!!"

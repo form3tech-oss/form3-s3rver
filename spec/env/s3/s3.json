@@ -1,0 +1,39 @@
+{
+  "directory": "./s3-tmp",
+  "hostname": "0.0.0.0",
+  "port": 5000,
+  "silent" : false,
+  "buckets": [
+    {
+      "name": "bucket1",
+      "filters": [
+        {
+          "name": "SNS",
+          "prefix": "folder1",
+          "events": [],
+          "notification": {
+            "type": "sns",
+            "topicArn": "arn:aws:sns:eu-west-1:1234567890123:local-bucket1-events",
+            "region": "eu-west-1",
+            "endpoint": "http://sns:9911"
+          }
+        }
+      ]
+    },
+    {
+      "name": "bucket2",
+      "filters": [
+        {
+          "name": "SQS",
+          "prefix": "folder1",
+          "events": [],
+          "notification": {
+            "type": "sqs",
+            "queueUrl": "http://sqs:1212/queue/local-bucket2-events",
+            "region": "eu-west-1"
+          }
+        }
+      ]
+    }
+  ]
+}

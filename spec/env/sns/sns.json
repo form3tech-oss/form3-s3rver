@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "timestamp": 1465414804110,
+  "subscriptions": [
+    {
+      "arn": "be36df39-949c-4b74-8d2e-4de940db7a0c",
+      "topicArn": "arn:aws:sns:eu-west-1:1234567890123:local-bucket1-events",
+      "endpoint": "aws-sqs://local-bucket1-events?amazonSQSEndpoint=http://${SQS_HOST}:${SQS_PORT}&accessKey=&secretKey=",
+      "owner": "",
+      "protocol": "sqs"
+    }
+  ],
+  "topics": [
+    {
+      "arn": "arn:aws:sns:eu-west-1:1234567890123:local-bucket1-events",
+      "name": "local-bucket1-events"
+    }
+  ]
+}

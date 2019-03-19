@@ -1,0 +1,47 @@
+{
+  "directory": "./s3-tmp",
+  "hostname": "0.0.0.0",
+  "port": 5000,
+  "silent" : false,
+  "buckets": [
+    {
+      "name": "bucket1",
+      "filters": [
+        {
+          "name": "log",
+          "events": [],
+          "notification": {
+            "type": "log",
+            "level": "info"
+          }
+        }
+      ]
+    },
+    {
+      "name": "bucket2",
+      "filters": [
+        {
+          "name": "log",
+          "prefix": "folder1",
+          "events": [],
+          "notification": {
+            "type": "sqs",
+            "queueUrl": "http://127.0.0.1:1212/queue/local-fake_step_sct_outbound_payments",
+            "region": "eu-west-1"
+          }
+        },
+        {
+          "name": "log",
+          "prefix": "folder2",
+          "events": [],
+          "notification": {
+            "type": "sns",
+            "topicArn": "arn:aws:sns:eu-west-1:123456789012:local-form3-events",
+            "region": "eu-west-1",
+            "endpoint": "http://127.0.0.1:9911"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "form3-s3",
+  "version": "1.0.0",
+  "description": "Form3 S3 Server",
+  "main": "index.js",
+  "scripts": {
+    "build": "docker build -t form3tech/f3-server .",
+    "pretest": "cd spec/env && docker-compose up -d --always-recreate-deps --force-recreate && sleep 5",
+    "test": "node_modules/jasmine/bin/jasmine.js",
+    "posttest": "cd spec/env && docker-compose down"
+  },
+  "bin": {
+    "form3-s3": "bin/form3-s3.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/form3tech/form3-s3.git"
+  },
+  "keywords": [
+    "Form3",
+    "S3"
+  ],
+  "author": "Form3Tech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/form3tech/form3-s3/issues"
+  },
+  "homepage": "https://github.com/form3tech/form3-s3#readme",
+  "dependencies": {
+    "aws-sdk": "2.423.0",
+    "rxjs": "6.4.0",
+    "s3rver": "2.2.8",
+    "lodash": "4.17.11",
+    "winston": "2.4.4"
+  },
+  "devDependencies": {
+    "jasmine": "3.3.1",
+    "jasmine-console-reporter": "3.1.0",
+    "uuid": "latest"
+  }
+}
