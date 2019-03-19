@@ -19,7 +19,7 @@
   "keywords": [
     "Form3",
     "S3",
-    "S3rver
+    "S3rver"
   ],
   "author": "Form3Tech",
   "license": "ISC",
@@ -37,6 +37,6 @@
   "devDependencies": {
     "jasmine": "3.3.1",
     "jasmine-console-reporter": "3.1.0",
-    "uuid": "latest"
+    "uuid": "3.3.2"
   }
 }
