@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/form3tech/form3-s3.git"
+    "url": "git+ssh://git@github.com/form3tech-oss/form3-s3rver.git"
   },
   "keywords": [
     "Form3",
@@ -23,9 +23,9 @@
   "author": "Form3Tech",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/form3tech/form3-s3/issues"
+    "url": "https://github.com/form3tech-oss/form3-s3rver/issues"
   },
-  "homepage": "https://github.com/form3tech/form3-s3#readme",
+  "homepage": "https://github.com/form3tech/form3-s3rver#readme",
   "dependencies": {
     "aws-sdk": "2.423.0",
     "rxjs": "6.4.0",
