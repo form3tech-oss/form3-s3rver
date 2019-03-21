@@ -31,5 +31,7 @@ jobs:
     - echo "Add check here!!!"
   - stage: publish
     name: Publish
+    on:
+      tags: true
     script:
-    - ./scripts/release.sh
+    - ./scripts/docker-release.sh
