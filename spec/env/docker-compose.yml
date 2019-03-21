@@ -10,11 +10,11 @@ services:
       BIND_PORT: 1212
       NODE_HOST: sqs
   s3:
-    image: form3tech/f3-server
+    image: form3tech/form3-s3rver
     ports:
       - 5000:5000
     volumes:
-      - ./s3/s3.json:/form3-s3/s3.json
+      - ./s3/s3.json:/form3-s3rver/s3.json
 
   sns:
     image: 288840537196.dkr.ecr.eu-west-1.amazonaws.com/tech.form3/sns

@@ -1,29 +1,37 @@
 language: node_js
 node_js:
-  - "6"
-  - "8"
-  - "9"
+- '11'
 services:
-  - docker
+- docker
 cache:
   directories:
-    - $HOME/docker
+  - "$HOME/docker"
+  - node_modules
 env:
   global:
-    - PROJECT_NAME=form3-s3
-    - AWS_REGION=eu-west-1
+  - PROJECT_NAME=form3-s3
+  - secure: GKrYrhWqgF4EECn62mmDPP0U7FwnH9MT6x1a/vASzSUhc2rNoTZ5yF25D8giw0YNHSW+505JQt4SKtD5XS0Xe/kC8jvrcV5XgecVIi3qoZrf7w9eQV3kl+gSM9vw67j2G1mYktbA+XcFasyCI9gp9MW/JWFtMbn14/J813wEeNyDFEs869Kv5cI2pwTRtcl7Mc3FdOmMxxpd6v4rbRBaWcmOdj0RKHFUkHzpG5K/51kP5Dyhe8R/VQtXRGzznyGweRouoG3URodOqn/NnAPvGpp2/06aNDkWzU4YXQcCQzo/HY4YGc0PoowWaiCf/Cj1oynX+Lwxul3HFW0a03T95+i028f/tltV7CiXcFnr/kJYVvF6EsW0FlnamQplxuPSm3hMCOi4FBQWfBPwkgKcu+xpesXXsZ2b+k3i3bHQC5cTQEYeQDXZN5COFIqXRanoycCBQl0muaRk4C5kHgsd/f+uB578o3OqKr6UjHWReVHTIvLA8KpctvuNXo0BE6kbTL2M6QnQ0F9n+K4QJfVJbIyye730q1MuSJD6i+gWutf3C1+wBMuzYfJ+xj0076wl8bTE70k3MWgzhni903m7YlWUD9D1X4569BgqyGYwSSiRAvoq+p5Dmfk1JR6Pfta8PUspmPyhWM9I6YR451R0+3hjP250/FssAq5JbdglRKw=
+  - secure: lJIcYlww4wg7aR+pQnR/s9kpnoKMBzHiXO9iJo0Dy1mqfcKFOqG6hxWpwCH3LUQ3GbozT//6bnTalukj30hRFcTCv3D3OrSVqSqq7DvgnO0qssb3FO+x5+6c/7wOE1HIcAlLTTZ2exK4IabsaAdXE2VjZQbXxWjgzV7sspAHxLYQlvxFTJemJgiU4AENr9dagt+2XcX8pUF8BHhJzRNPaW2cCwVZ1Kcf+CHBRqvQLjJTDs44iJVPDr1kk4Usrc6INyv5a1ZphFnvZ25ApvO2qARVM4lC2ro+Le66yc9JyiGpKkrVjbpQ5yuCX1r6i/4R2FLPbj33ajF/prI4q4bqtxJ2G3jhmWBDo74+geVpZIY9q8Y0l99be74GtmyFIQkU4UqgRW72Mzy3fQRmwcIt8jPgOnl0oqGSyIosLTWCSyyucSISVXRA3JHZWcu8Nqvj3nz15pG8DTF1ZS/L8rJmQDCEs758niTL6Kb6dkCqyc0uhK+SuCNfPIZSL7s4QpLgliz0iSNV1bUN+uTTbyUAvnvspS3WTB+UyALDsTtuGKKsenvsXcLy7fGWuueWTmGtzEqP7gKRANAJXRK22AVwAAaLBRkYJ9/matitdpY4g38TiRyCNglMWbx1XYX8bawg8AiCyfxNgD6cppbZwaP2ylg3lq3q4tm3ytqb9r0L8fg=
 jobs:
   include:
-    - stage: test
-      name: "Run Node Tests"
-      script:
-        - npm run build
-        - npm test
-    - stage: test
-      name: "Run Security Scans"
-      script:
-        - echo "Add check here!!!"
-    - stage: publish
-      name: Publish
-      script:
-        - echo "Add Publish here!!!"
+  - stage: test
+    name: Run Node Tests
+    install:
+    - export HOST_IP=$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d -f1)
+    - if [[ -a .git/shallow ]]; then git fetch --unshallow --tags; fi
+    - pip install --user awscli
+    - eval $(aws ecr get-login --no-include-email --region eu-west-1)
+    - npm install
+    script:
+    - npm run build
+    - npm test
+  - stage: test
+    name: Run Security Scans
+    script:
+    - echo "Add check here!!!"
+  - stage: publish
+    name: Publish
+    on:
+      tags: true
+    script:
+    - ./scripts/docker-release.sh
