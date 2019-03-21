@@ -1,16 +1,16 @@
 {
-  "name": "form3-s3",
+  "name": "form3-s3rver",
   "version": "1.0.0",
   "description": "Form3 S3 Server",
   "main": "index.js",
   "scripts": {
-    "build": "docker build -t form3tech/f3-server .",
+    "build": "docker build -t form3tech/form3-s3rver .",
     "pretest": "cd spec/env && docker-compose down && docker-compose up -d && sleep 5",
     "test": "node_modules/jasmine/bin/jasmine.js",
     "posttest": "cd spec/env && docker-compose down"
   },
   "bin": {
-    "form3-s3": "bin/form3-s3.js"
+    "form3-s3": "bin/form3-s3rver.js"
   },
   "repository": {
     "type": "git",

@@ -3,9 +3,9 @@ FROM mhart/alpine-node
 ENV AWS_ACCESS_KEY_ID=foo \
     AWS_SECRET_ACCESS_KEY=bar
 
-RUN mkdir -p form3-s3
+RUN mkdir -p form3-s3rver
 
-WORKDIR form3-s3
+WORKDIR form3-s3rver
 
 COPY ./bin ./bin
 COPY ./lib ./lib
