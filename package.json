@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "docker build -t form3tech/f3-server .",
-    "pretest": "cd spec/env && docker-compose up -d --always-recreate-deps --force-recreate && sleep 5",
+    "pretest": "cd spec/env && docker-compose down && docker-compose up -d && sleep 5",
     "test": "node_modules/jasmine/bin/jasmine.js",
     "posttest": "cd spec/env && docker-compose down"
   },
