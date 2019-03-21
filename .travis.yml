@@ -16,6 +16,7 @@ jobs:
     - stage: test
       name: "Run Node Tests"
       script:
+        - npm install
         - npm run build
         - npm test
     - stage: test
