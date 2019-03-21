@@ -21,7 +21,7 @@ jobs:
     - export HOST_IP=$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d -f1)
     - if [[ -a .git/shallow ]]; then git fetch --unshallow --tags; fi
     - pip install --user awscli
-    - eval (aws ecr get-login --no-include-email)
+    - eval $(aws ecr get-login --no-include-email)
     - npm install
     script:
     - npm run build
