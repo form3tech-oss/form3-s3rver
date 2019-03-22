@@ -10,7 +10,7 @@ services:
       BIND_PORT: 1212
       NODE_HOST: sqs
   s3:
-    image: form3tech/form3-s3rver
+    image: tech.form3/form3-s3rver
     ports:
       - 5000:5000
     volumes:
