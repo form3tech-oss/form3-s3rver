@@ -13,4 +13,4 @@ COPY index.js package.json package-lock.json ./
 
 RUN npm install && npm install -g
 EXPOSE 5000
-CMD [ "form3-s3" ]
+CMD [ "form3-s3rver" ]
