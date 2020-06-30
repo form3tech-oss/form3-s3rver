@@ -1,5 +1,6 @@
 'use strict';
 const filter = require("rxjs/operators").filter;
+const { fromEvent } = require('rxjs');
 const S3rver = require("s3rver");
 const Fs     = require('fs');
 const Path   = require('path');
@@ -22,7 +23,7 @@ Config.buckets.forEach( bucket => {
 
 Logger.info("Launching S3 server");
 const server = new S3rver(Config)
-    .run((err, host, port) => {
+    .run((err, {host, port} = {}) => {
         if (err) {
             Logger.error(err);
             process.exit(1);
@@ -34,7 +35,8 @@ const server = new S3rver(Config)
 const Notifications = Notification.factoryNotifications(Config.buckets);
 
 Notifications.forEach( notification => {
-    server.s3Event
+    const s3Events = fromEvent(server, 'event');
+    s3Events
         .pipe( filter(e => notification.doFilter(e)) )
         .subscribe(e => notification.doNotify(e) );
 });

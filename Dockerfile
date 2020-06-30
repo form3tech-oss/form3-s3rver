@@ -1,4 +1,4 @@
-FROM mhart/alpine-node
+FROM node:alpine
 
 ENV AWS_ACCESS_KEY_ID=foo \
     AWS_SECRET_ACCESS_KEY=bar
