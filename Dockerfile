@@ -1,7 +1,7 @@
-FROM node:alpine
+FROM node:12-alpine
 
-ENV AWS_ACCESS_KEY_ID=foo \
-    AWS_SECRET_ACCESS_KEY=bar
+ENV AWS_ACCESS_KEY_ID=S3RVER \
+    AWS_SECRET_ACCESS_KEY=S3RVER
 
 RUN mkdir -p form3-s3rver
 

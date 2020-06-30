@@ -1,6 +1,7 @@
+dist: bionic
 language: node_js
 node_js:
-  - '11'
+  - '12'
 services:
   - docker
 cache:

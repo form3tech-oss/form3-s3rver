@@ -7,7 +7,9 @@ describe('Given a Form3 S3 Service', () => {
 
     let s3 = new AWS.S3({
         endpoint: "http://127.0.0.1:5000",
-        s3ForcePathStyle: true
+        s3ForcePathStyle: true,
+        accessKeyId: "S3RVER",
+        secretAccessKey: "S3RVER"
     });
     let sqs = new AWS.SQS({
         region: "eu-west-1",
@@ -56,7 +58,7 @@ describe('Given a Form3 S3 Service', () => {
                     expect(data.Messages).not.toBeNull();
                     expect(data.Messages.length).toBe(1);
 
-                    let message = JSON.parse(data.Messages[0].Body);
+                    let message = JSON.parse(JSON.parse(data.Messages[0].Body).Message);
                     expect(message.Records).not.toBeNull();
                     expect(message.Records.length).toBe(1);
                     expect(message.Records[0].eventSource).toEqual("aws:s3");
