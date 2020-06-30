@@ -23,7 +23,7 @@ Config.buckets.forEach( bucket => {
 
 Logger.info("Launching S3 server");
 const server = new S3rver(Config)
-    .run((err, {host, port} = {}) => {
+    .run((err, host, port) => {
         if (err) {
             Logger.error(err);
             process.exit(1);

@@ -1,6 +1,6 @@
 {
   "directory": "./s3-tmp",
-  "hostname": "0.0.0.0",
+  "address": "0.0.0.0",
   "port": 5000,
   "silent" : false,
   "buckets": [
