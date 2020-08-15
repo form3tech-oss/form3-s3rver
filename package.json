@@ -32,7 +32,7 @@
     "rxjs": "6.4.0",
     "s3rver": "2.2.8",
     "lodash": "4.17.11",
-    "winston": "2.4.4"
+    "winston": "2.4.5"
   },
   "devDependencies": {
     "jasmine": "3.3.1",
