@@ -29,7 +29,7 @@
   "homepage": "https://github.com/form3tech/form3-s3rver#readme",
   "dependencies": {
     "aws-sdk": "2.423.0",
-    "rxjs": "6.4.0",
+    "rxjs": "6.6.0",
     "s3rver": "2.2.8",
     "lodash": "4.17.11",
     "winston": "2.4.4"
